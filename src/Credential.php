@@ -116,7 +116,14 @@ class Credential
             $parameters[] = $this->getValue($parameter);
         }
 
-        $this->credential = $class->newInstance(...$parameters);
+        if (count($parameters) == 2)
+        {
+	        $this->credential = $class->newInstance($parameters['0'], $parameters['1']);
+        } else {
+	        $this->credential = $class->newInstance($parameters['0'], $parameters['1'],$parameters['2'], $parameters['3']);
+        }
+
+        //$this->credential = $class->newInstance(...$parameters);
     }
 
     /**
